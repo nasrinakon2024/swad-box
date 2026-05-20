@@ -1,16 +1,55 @@
-# React + Vite
+# 🍔 SwadBox - Food Delivery & Admin Management System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SwadBox হলো একটি মডার্ন, ক্লিন এবং সম্পূর্ণ রেসপন্সিভ ফুড ডেলিভারি ল্যান্ডিং পেজ প্রজেক্ট। এটি অত্যন্ত চমৎকার ইউজার ইন্টারফেস (UI) এবং ডাইনামিক ফিচার দিয়ে তৈরি করা হয়েছে, যা একই সাথে কাস্টমার মোড এবং সিকিউরড অ্যাডমিন প্যানেল সাপোর্ট করে।
 
-Currently, two official plugins are available:
+🌐 **লাইভ ওয়েবসাইট লিংক:** [https://swad-box.vercel.app/](https://swad-box.vercel.app/)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## ✨ মূল ফিচারসমূহ (Features)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 👤 ইউজার প্যানেল (User Panel)
+* **মোবাইল রেসপন্সিভ নেভবার:** ছোট-বড় যেকোনো মোবাইল বা ট্যাবলেটের স্ক্রিনের সাথে স্বয়ংক্রিয়ভাবে মানিয়ে নেওয়া নিখুঁত নেভিগেশন বার।
+* **ইনস্ট্যান্ট সাইন আপ / লগইন:** ইউজাররা তাদের নাম, প্রোফাইল পিকচার ইউআরএল এবং লোকেশন দিয়ে সাথে সাথে অ্যাকাউন্ট তৈরি করতে পারবেন।
+* **ডাইনামিক কাস্টমার রিভিউ:** প্রোফাইল পিকচার ও লোকেশনসহ লাইভ রিভিউ দেওয়ার সুবিধা এবং সাবমিট করার সাথে সাথে তা স্ক্রিনে যুক্ত হওয়া।
+* **স্মার্ট কার্ট সিস্টেম (Cart):** যেকোনো খাবার কার্টে অ্যাড করা, পরিমাণ (Quantity) বাড়ানো-কমানো এবং লাইভ টোটাল হিসাব।
+* **বিকাশ ও নগদ পেমেন্ট:** মোবাইল নম্বর ও TrxID (ট্যাক্স আইডি) দিয়ে ডাইনামিক ফর্মের মাধ্যমে অর্ডার প্লেস করার সুবিধা।
 
-## Expanding the ESLint configuration
+### ⚙️ অ্যাডমিন কন্ট্রোল প্যানেল (Admin Dashboard)
+* **সিকিউরড প্রটেকশন:** গোপন পাসওয়ার্ড ভেরিফিকেশনের মাধ্যমে লক করা প্রফেশনাল অ্যাডমিন প্যানেল।
+* **লাইভ প্রোডাক্ট পাবলিশ:** অ্যাডমিন প্যানেল থেকে নতুন খাবারের নাম, দাম, ছবি ও ডেসক্রিপশন দিয়ে সাইটে সরাসরি নতুন আইটেম যুক্ত করার সুবিধা।
+* **অর্ডার ট্র্যাকিং:** কাস্টমারদের পাঠানো অর্ডার রিয়েল-টাইম দেখা এবং "কনফর্ম" করার সুবিধা।
+* **লাইভ সেলস কাউন্টার:** অর্ডার কনফর্ম হওয়ার সাথে সাথে মোট সেলস বা ইনকামের হিসাব স্বয়ংক্রিয়ভাবে আপডেট হওয়া।
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 🛠️ টেকনোলজি স্ট্যাক (Technologies Used)
+
+* **Frontend Framework:** React.js (Vite)
+* **Styling:** Tailwind CSS
+* **UI Components:** DaisyUI
+* **Icons:** SVG Icons
+* **Hosting & Deployment:** Vercel
+
+---
+
+## 🚀 লোকাল কম্পিউটারে রান করার নিয়ম (Installation & Setup)
+
+আপনার কম্পিউটারে প্রজেক্টটি লোকালহোস্টে রান করতে নিচের ধাপগুলো ফলো করুন:
+
+১. রিপোজিটরি ক্লোন করুন:
+```bash
+git clone [https://github.com/nasrinakon2024/swadbox.git](https://github.com/nasrinakon2024/swadbox.git)
+
+২. প্রজেক্ট ফোল্ডারে যান: cd swadbox
+৩. ডিপেন্ডেন্সি বা প্যাকেজগুলো ইনস্টল করুন: npm install
+৪. ডেভেলপমেন্ট সার্ভার রান করুন: npm run dev
+**এখন আপনার টার্মিনাল বা ব্রাউজারে http://localhost:5173 লিংকটি ওপেন করলেই প্রজেক্টটি লোকালহোস্টে দেখতে পাবেন।**
+
+🔒 অ্যাডমিন পাসওয়ার্ড (Admin Credentials)
+    পাসওয়ার্ড: naina2026
+
+📝 লাইসেন্স (License)
+এই প্রজেক্টটি সম্পূর্ণ শিক্ষণীয় এবং পোর্টফোলিও তৈরির উদ্দেশ্যে তৈরি করা হয়েছে।
+
+Developed with 🖤 by Nasrin Sultana (Naina).
