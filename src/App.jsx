@@ -200,56 +200,87 @@ const App = () => {
     <div className="min-h-screen bg-base-100 font-sans text-base-content scroll-smooth">
       
       {/* ================= ৩. নেভিগেশন বার ================= */}
-      <div className="navbar bg-base-100 shadow-md px-3 md:px-12 sticky top-0 z-50">
-        <div className="navbar-start flex items-center">
-          <a className="btn btn-ghost text-xl md:text-2xl font-black tracking-wide p-1 md:p-2" href="#home">
-  Swad<span className="text-orange-500">Box</span>
-</a>
-          <div className="join ml-2 md:ml-4">
-            <button onClick={() => setActiveTab('user')} className={`btn btn-[10px] md:btn-xs px-2 join-item ${activeTab === 'user' ? 'btn-neutral' : 'btn-outline'}`}>ইউজার</button>
-            <button onClick={() => document.getElementById('admin_lock_modal').showModal()} className={`btn btn-[10px] md:btn-xs px-2 join-item ${activeTab === 'admin' ? 'btn-error text-white' : 'btn-outline'}`}>অ্যাডমিন ({orders.length})</button>
-          </div>
-        </div>
+<div className="navbar bg-base-100 shadow-md px-2 sm:px-4 md:px-12 sticky top-0 z-50">
+  {/* নেভবার স্টার্ট: লোগো এবং মোড টগল বাটন */}
+  <div className="navbar-start flex items-center flex-wrap sm:flex-nowrap gap-1 sm:gap-2">
+    <a className="btn btn-ghost text-lg sm:text-xl md:text-2xl font-black tracking-wide p-1 md:p-2" href="#home">
+      Swad<span className="text-orange-500">Box</span>
+    </a>
+    
+    <div className="join ml-1 sm:ml-2 md:ml-4 scale-90 sm:scale-100">
+      <button 
+        onClick={() => setActiveTab('user')} 
+        className={`btn btn-[10px] sm:btn-xs px-1.5 sm:px-2 join-item ${activeTab === 'user' ? 'btn-neutral' : 'btn-outline'}`}
+      >
+        ইউজার
+      </button>
+      <button 
+        onClick={() => document.getElementById('admin_lock_modal').showModal()} 
+        className={`btn btn-[10px] sm:btn-xs px-1.5 sm:px-2 join-item ${activeTab === 'admin' ? 'btn-error text-white' : 'btn-outline'}`}
+      >
+        অ্যাডমিন ({orders.length})
+      </button>
+    </div>
+  </div>
 
-        <div className="navbar-end gap-2 md:gap-3">
-          <div className="btn btn-ghost btn-circle btn-sm md:btn-md" onClick={() => setIsCartOpen(true)}>
-            <div className="indicator">
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" /></svg>
-              <span className="badge badge-xs md:badge-sm badge-error text-white indicator-item">{cart.reduce((sum, i) => sum + i.quantity, 0)}</span>
-            </div>
-          </div>
-
-          {isLoggedIn ? (
-            <div className="relative">
-              <button onClick={() => setIsProfileOpen(!isProfileOpen)} className="btn btn-ghost btn-circle avatar online border border-orange-500 w-9 h-9 md:w-10 md:h-10 overflow-hidden">
-                <img src={userProfile.avatar} alt="User Avatar" className="w-full h-full object-cover" />
-              </button>
-              {isProfileOpen && (
-                <div className="absolute right-0 mt-3 z-[100] p-5 shadow-2xl bg-base-100 rounded-2xl border border-base-200 w-72 text-base-content">
-                  <div className="text-center border-b border-base-200 pb-3 mb-3 flex flex-col items-center">
-                    <img src={userProfile.avatar} className="w-14 h-14 rounded-full object-cover border border-orange-500 mb-2 shadow-sm" alt="" />
-                    <h4 className="font-black text-lg">{userProfile.name || "নাসরিন সুলতানা"}</h4>
-                    <p className="text-xs text-base-content/60">{userProfile.email || "example@gmail.com"}</p>
-                    <span className="badge badge-sm badge-outline mt-1 text-orange-500 font-bold">📍 {userProfile.location}</span>
-                  </div>
-                  <div className="space-y-2 mb-4">
-                    <span className="text-xs font-bold text-base-content/40 uppercase block">আমার অর্ডার স্ট্যাটাস</span>
-                    <div className="flex justify-between items-center bg-warning/10 text-warning-content px-3 py-1.5 rounded-xl text-xs font-semibold">
-                      <span>⏳ পেন্ডিং</span><span className="badge badge-warning text-xs font-bold">{orders.filter(o => o.status === 'Pending').length} টি</span>
-                    </div>
-                    <div className="flex justify-between items-center bg-success/10 text-success-content px-3 py-1.5 rounded-xl text-xs font-semibold">
-                      <span>✅ কনফর্মড</span><span className="badge badge-success text-white text-xs font-bold">{orders.filter(o => o.status === 'Confirmed').length} টি</span>
-                    </div>
-                  </div>
-                  <button onClick={() => { setIsLoggedIn(false); setIsProfileOpen(false); }} className="btn btn-error btn-outline btn-sm w-full rounded-xl font-bold">লগআউট</button>
-                </div>
-              )}
-            </div>
-          ) : (
-            <button className="btn bg-orange-500 hover:bg-orange-600 text-white border-none btn-xs md:btn-sm rounded-lg font-bold px-4 py-1" onClick={() => document.getElementById('login_modal').showModal()}>লগইন / সাইন আপ</button>
-          )}
-        </div>
+  {/* ネভবার এন্ড: কার্ট এবং প্রোফাইল/লগইন বাটন */}
+  <div className="navbar-end gap-1.5 sm:gap-2 md:gap-3">
+    {/* কার্ট বাটন */}
+    <div className="btn btn-ghost btn-circle btn-sm md:btn-md" onClick={() => setIsCartOpen(true)}>
+      <div className="indicator">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 md:h-6 md:w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+        </svg>
+        <span className="badge badge-xs md:badge-sm badge-error text-white indicator-item font-bold">
+          {cart.reduce((sum, i) => sum + i.quantity, 0)}
+        </span>
       </div>
+    </div>
+
+    {/* লগইন স্ট্যাটাস চেক */}
+    {isLoggedIn ? (
+      <div className="relative">
+        <button onClick={() => setIsProfileOpen(!isProfileOpen)} className="btn btn-ghost btn-circle avatar online border border-orange-500 w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 overflow-hidden">
+          <img src={userProfile.avatar} alt="User Avatar" className="w-full h-full object-cover" />
+        </button>
+        
+        {isProfileOpen && (
+          <div className="absolute right-0 mt-3 z-[100] p-4 sm:p-5 shadow-2xl bg-base-100 rounded-2xl border border-base-200 w-64 sm:w-72 text-base-content">
+            <div className="text-center border-b border-base-200 pb-3 mb-3 flex flex-col items-center">
+              <img src={userProfile.avatar} className="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border border-orange-500 mb-2 shadow-sm" alt="" />
+              <h4 className="font-black text-base sm:text-lg">{userProfile.name || "নাসরিন সুলতানা"}</h4>
+              <p className="text-[11px] sm:text-xs text-base-content/60 max-w-full truncate">{userProfile.email || "example@gmail.com"}</p>
+              <span className="badge badge-sm badge-outline mt-1 text-orange-500 font-bold text-[10px] sm:text-xs">📍 {userProfile.location}</span>
+            </div>
+            
+            <div className="space-y-2 mb-4">
+              <span className="text-[10px] sm:text-xs font-bold text-base-content/40 uppercase block">আমার অর্ডার স্ট্যাটাস</span>
+              <div className="flex justify-between items-center bg-warning/10 text-warning-content px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold">
+                <span>⏳ পেন্ডিং</span>
+                <span className="badge badge-warning text-[10px] sm:text-xs font-bold">{orders.filter(o => o.status === 'Pending').length} টি</span>
+              </div>
+              <div className="flex justify-between items-center bg-success/10 text-success-content px-3 py-1.5 rounded-xl text-[11px] sm:text-xs font-semibold">
+                <span>✅ কনফর্মড</span>
+                <span className="badge badge-success text-white text-[10px] sm:text-xs font-bold">{orders.filter(o => o.status === 'Confirmed').length} টি</span>
+              </div>
+            </div>
+            
+            <button onClick={() => { setIsLoggedIn(false); setIsProfileOpen(false); }} className="btn btn-error btn-outline btn-sm w-full rounded-xl font-bold text-xs">
+              লগআউট
+            </button>
+          </div>
+        )}
+      </div>
+    ) : (
+      <button 
+        className="btn bg-orange-500 hover:bg-orange-600 text-white border-none text-[10px] sm:btn-xs md:btn-sm rounded-lg font-bold px-2 sm:px-4 h-7 sm:h-auto min-h-0" 
+        onClick={() => document.getElementById('login_modal').showModal()}
+      >
+        লগইন / সাইন আপ
+      </button>
+    )}
+  </div>
+</div>
 
       {/* ================= ৪. ভিউ হ্যান্ডলার (User/Admin) ================= */}
       {activeTab === 'admin' ? (
